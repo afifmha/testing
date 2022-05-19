@@ -1,0 +1,74 @@
+<head>
+  <script>
+    function proses() {
+      if (document.getElementsByName("merkHp")[0].checked) {
+        var hargaHp = 1;
+      } else if (document.getElementsByName("merkHp")[1].checked) {
+        var hargaHp = 2;
+      } else {
+        var hargaHp = 3;
+      }
+
+      var total_harga = hargaHp * document.getElementById("jumlahHp").value;
+
+      if (document.getElementById("handfree").checked)
+        var total_harga = 1 + total_harga;
+      if (document.getElementById("powerbank").checked)
+        var total_harga = 2 + total_harga;
+      if (document.getElementById("casing").checked)
+        var total_harga = 3 + total_harga;
+
+      document.getElementById("Total").value = total_harga;
+    }
+  </script>
+</head>
+
+<body>
+  <form name="formPenjualan">
+    <center>
+      PROGRAM PENJUALAN HP
+      <hr />
+      <table>
+        <tr>
+          <td rowspan="3">Kode Tujuan</td>
+          <td><input type="radio" name="merkHp" />Samsung</td>
+        </tr>
+
+        <tr>
+          <td><input type="radio" name="merkHp" />Oppo</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="merkHp" />Xiaomi</td>
+        </tr>
+        <tr>
+          <td>Jumlah HP</td>
+          <td>
+            <input type="text" name="jumlah_hp" id="jumlahHp" size="5" />
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="3">Aksesoris</td>
+          <td>
+            <input type="checkbox" name="handfree" id="handfree" />Handfree
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="powerbank" id="powerbank" />Powerbank
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="casing" id="casing" />Casing</td>
+        </tr>
+        <td colspan="2"><hr /></td>
+        <tr>
+          <td>Total</td>
+          <td><input type="text" name="total_harga" id="Total" disabled /></td>
+        </tr>
+      </table>
+      <hr />
+      <input type="button" value="Proses" onclick="proses()" />
+      <input type="reset" value="Reset" />
+    </center>
+  </form>
+</body>
